@@ -1,28 +1,19 @@
+//this is the main source file
+
+
 #include <stdio.h>
 #include <time.h>
 #include <string.h>
 #include <stdlib.h>
+#include "player.h"
 
-typedef struct Monster{
-    char name[25];
-    int attack;
-    int health;
-    char type[25];
-}Monster;
-
-typedef struct Player{
-   char name[25];
-   int health;
-   Monster deck;
-   Monster hand[5];
-   Monster attackQueue;
-   Monster defenseQueue;
-}Player;
+typedef struct Player Player;
 
 int main(){
     printf("Weclome to Yu-Gi-Oh\n\n");
     printf("Main menu\n");
     char choice;
+    Player* playerList = NULL;  // this is the head of a linked list for all the players
     do{
         printf("Press 1 to create a player\n");
         printf("Press 2 to add cards to you deck\n");
@@ -33,18 +24,24 @@ int main(){
 
         switch (choice){
             case '1':
+                getchar(); //clear input buffer
                 printf("creating player");
-                scanf("%c"); //clear input buffer
+                //function to add players
+                createPlayer(&playerList);  //the players are going to be connected by linked list
+                getchar(); //clear input buffer
                 break;
 
             case '2':
                 printf("Adding Cards");
-                scanf("%c"); //clear input buffer
+                //function to add cards
+
+                getchar(); //clear input buffer
                 break;
 
             case '3':
                 printf("Get ready for battle");
-                scanf("%c"); //clear input buffer
+                //functions to battle
+                getchar(); //clear input buffer
                 break;
             
             case '4':
@@ -52,7 +49,7 @@ int main(){
             default:
                 printf("%c is not a valid character, enter again", choice);
                 scanf("%c", &choice);
-                scanf("%c"); //clear input buffer
+                getchar(); //clear input buffer
         }
     }while(choice != '4');
     return 0;
