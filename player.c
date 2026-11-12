@@ -1,7 +1,9 @@
 //this is the palyer file where functions that relate to the player class are going to be written
 
-#include <player.h>
+#include "player.h"
+#include "monster.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 void createPlayer(Player **players){
     Player *newPlayer = malloc(sizeof(Player));
