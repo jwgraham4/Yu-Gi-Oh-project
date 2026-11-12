@@ -31,6 +31,10 @@ int main(){
                 break;
 
             case '2':
+                if (playerList == NULL) {
+                    printf("Create a player before adding cards.\n");
+                    break;
+                }
                 printf("which deck would you like to add cards from? (1 or 2)\n");
                 int deckChoice;
                 scanf("%d", &deckChoice);
