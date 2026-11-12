@@ -3,6 +3,7 @@
 
 #include "monster.h"
 
+
 typedef struct Node {
     Monster card;
     struct Node *next;
@@ -22,10 +23,10 @@ typedef struct Player Player;
 struct Player {
     char name[25];
     int health;
-    Stack deck;
+    Stack* deck;
     Monster hand[5];
-    Queue attack;
-    Queue defense;
+    Queue* attack;
+    Queue* defense;
     Player* next;
     Player* prev;
 };
