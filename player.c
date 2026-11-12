@@ -6,15 +6,25 @@
 #include <stdlib.h>
 
 void createPlayer(Player **players){
-    Player *newPlayer = malloc(sizeof(Player));
+    Player *newPlayer = calloc(1, sizeof(Player));
+    if (newPlayer == NULL) {
+        fprintf(stderr, "Could not create player: out of memory\n");
+        return;
+    }
+
+    newPlayer->deck = calloc(1, sizeof(Stack));
+    if (newPlayer->deck == NULL) {
+        fprintf(stderr, "Could not create player deck: out of memory\n");
+        free(newPlayer);
+        return;
+    }
+
     printf("What is the players name: ");
     fgets(newPlayer->name, sizeof(newPlayer->name), stdin);
     newPlayer->health = 8000;
 
     if (*players == NULL){
         *players = newPlayer;
-        (*players)->next = NULL;
-        (*players)->prev = NULL;
     }
     else{
         Player* tempPlayer = *players;
@@ -22,5 +32,6 @@ void createPlayer(Player **players){
             tempPlayer = tempPlayer->next;
         }
         tempPlayer->next = newPlayer;
+        newPlayer->prev = tempPlayer;
     }
 }
