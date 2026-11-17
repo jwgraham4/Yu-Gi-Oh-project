@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//this function will create a new player and add it to the linked list of players
 void createPlayer(Player **players){
     Player *newPlayer = calloc(1, sizeof(Player));
     if (newPlayer == NULL) {
