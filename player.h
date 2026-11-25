@@ -32,5 +32,7 @@ struct Player {
 };
 
 void createPlayer(Player **players);
+void destroyPlayer(Player *player);
+
 
 #endif
