@@ -124,7 +124,9 @@ void battle(Player *player1, Player *player2) {
     }
 
     //this is where the battle logic will go, we will compare the attack and defense cards and determine the winner of the round
+    int round = 1;
     while(firstPlayer->health > 0 && secondPlayer->health > 0) {
+        printf("Round %d\n", round);
         Monster attackCard1 = dequeue(&firstPlayer->attack);
         Monster defenseCard1 = dequeue(&firstPlayer->defense);
         Monster attackCard2 = dequeue(&secondPlayer->attack);
@@ -141,7 +143,17 @@ void battle(Player *player1, Player *player2) {
         // output to show the health of each player after each round
         printf("%s's health: %d\n", firstPlayer->name, firstPlayer->health);
         printf("%s's health: %d\n", secondPlayer->name, secondPlayer->health);
-        
+        round++;
+    }
+    //declare a winner based on the health of each player
+    if (firstPlayer->health <= 0 && secondPlayer->health <= 0) {
+        printf("It's a draw!\n");
+    } 
+    else if (firstPlayer->health <= 0) {
+        printf("%s wins the battle!\n", secondPlayer->name);
+    } 
+    else if (secondPlayer->health <= 0) {
+        printf("%s wins the battle!\n", firstPlayer->name);
     }
 }
 
